@@ -8,16 +8,16 @@ const urlOnline =
 
 const port = process.env.PORT || 2234;
 
-mongoose.connect(url).then(() => {
+mongoose.connect(urlOnline).then(() => {
 	console.log("database connected...!");
 });
 
 app.use(cors({ origin: "*" }));
 app.use(express.json());
 
-// app.use("/", async (req, res) => {
-// 	res.status(200).json({ message: "server is running on fine" });
-// });
+ app.use("/", async (req, res) => {
+ 	res.status(200).json({ message: "server is running on fine" });
+ });
 
 app.use("/user", require("./routes/userRouter"));
 
