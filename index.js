@@ -12,13 +12,16 @@ mongoose.connect(urlOnline).then(() => {
 	console.log("database connected...!");
 });
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
 
 
-app.use(cors());
+app.use(cors({
+    origin: '*'
+}));
+
 app.use(express.json());
 
  app.use("/", async (req, res) => {
