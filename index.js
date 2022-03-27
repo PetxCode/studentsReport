@@ -24,9 +24,9 @@ app.use(cors({
 
 app.use(express.json());
 
- app.use("/", async (req, res) => {
- 	res.status(200).json({ message: "server is running on fine" });
- });
+//  app.use("/", async (req, res) => {
+//  	res.status(200).json({ message: "server is running on fine" });
+//  });
 
 app.use("/user", require("./routes/userRouter"));
 
