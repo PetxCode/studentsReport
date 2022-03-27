@@ -12,7 +12,7 @@ mongoose.connect(urlOnline).then(() => {
 	console.log("database connected...!");
 });
 
-app.use(cors({origin: "*"));
+app.use(cors({ origin: "*" }));
 app.use(express.json());
 
  app.use("/", async (req, res) => {
