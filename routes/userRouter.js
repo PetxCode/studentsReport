@@ -162,6 +162,33 @@ router.post("/report/:id", async (req, res) => {
 	}
 });
 
+router.post("/note/:id", async (req, res) => {
+	try {
+		const note = {
+			rate: req.body.rate,
+			topic: req.body.topic,
+			note: req.body.note,
+		};
+
+		const getUsers = await userModel.findByIdAndUpdate(
+			req.params.id,
+			{
+				$push: { note },
+			},
+			{ new: true }
+		);
+		res.status(200).json({
+			message: "all users found",
+			data: getUsers,
+		});
+	} catch (err) {
+		res.status(400).json({
+			message: "Error found",
+			data: err.message,
+		});
+	}
+});
+
 router.post("/report/:id/:reportID", async (req, res) => {
 	try {
 		const point = {

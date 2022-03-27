@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
-const pointsModel = mongoose.Schema(
+const noteModel = mongoose.Schema(
 	{
 		topic: {
 			type: String,
 		},
-		note: {
+		rate: {
 			type: String,
 		},
-		example: {
+		note: {
 			type: String,
 		},
 	},
@@ -72,6 +72,7 @@ const userModel = mongoose.Schema(
 			type: String,
 		},
 		report: [reportModel],
+		note: [noteModel],
 	},
 	{
 		timestamps: true,

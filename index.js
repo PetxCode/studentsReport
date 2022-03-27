@@ -8,7 +8,7 @@ const urlOnline =
 
 const port = process.env.PORT || 2234;
 
-mongoose.connect(urlOnline).then(() => {
+mongoose.connect(url).then(() => {
 	console.log("database connected...!");
 });
 
