@@ -131,6 +131,40 @@ router.get("/:id", async (req, res) => {
 	}
 });
 
+router.patch("/update/:id", upload, async (req, res) => {
+	try {
+		const { email, name, description } = req.body;
+
+		const getUser = await userModel.findOne({ email });
+		if (getUser) {
+			await cloudinary.uploader.destroy(getUser.avatarID);
+		}
+
+		const image = await cloudinary.uploader.upload(req.file.path);
+
+		const getUsers = await userModel.findByIdAndUpdate(
+			req.params.id,
+			{
+				name,
+				description,
+				avatar: image.secure_url,
+				avatarID: image.public_id,
+			},
+			{ new: true }
+		);
+		res.status(200).json({
+			message: "individual user found",
+			data: getUsers,
+		});
+	} catch (err) {
+		res.status(400).json({
+			message: "Error found",
+			data: err.message,
+		});
+	}
+});
+
+
 router.post("/report/:id", async (req, res) => {
 	try {
 		const report = {
