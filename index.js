@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 const url = "mongodb://localhost/report";
 const urlOnline =
-	"mongodb+srv://PeterPan:PeterPan@codelab.eqkgv.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+	"mongodb+srv://PeterPan:PeterPan@codelab.eqkgv.mongodb.net/set05report?retryWrites=true&w=majority";
 
 const port = process.env.PORT || 2234;
 
